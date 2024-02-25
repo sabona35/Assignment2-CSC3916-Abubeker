@@ -72,6 +72,19 @@ router.post('/signin', (req, res) => {
     }
 });
 
+router.post('/signup', (req, res) => {
+    const { username, password } = req.body;
+    // Your user registration implementation here
+    res.status(200).json({ message: 'User registered successfully' });
+});
+
+router.post('/signin', (req, res) => {
+    const { username, password } = req.body;
+    // Your user login implementation here
+    res.status(200).json({ message: 'User logged in successfully' });
+});
+
+
 router.route('/testcollection')
     .delete(authController.isAuthenticated, (req, res) => {
         console.log(req.body);
@@ -94,7 +107,7 @@ router.route('/testcollection')
     }
     );
 
-    router.route('/movies')
+router.route('/movies')
     .get((req, res) => {
         const headers = req.headers;
         const query = req.query;
