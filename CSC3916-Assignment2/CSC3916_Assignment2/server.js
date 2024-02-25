@@ -93,6 +93,36 @@ router.route('/testcollection')
         res.json(o);
     }
     );
+
+    router.route('/movies')
+    .get((req, res) => {
+        const headers = req.headers;
+        const query = req.query;
+        const env = 'your unique key';
+        res.status(200).json({ status: 200, message: 'GET movies', headers, query, env });
+    })
+    .post((req, res) => {
+        const headers = req.headers;
+        const query = req.query;
+        const env = 'your unique key';
+        res.status(200).json({ status: 200, message: 'movie saved', headers, query, env });
+    })
+    .put(authJwtController.isAuthenticated, (req, res) => {
+        const headers = req.headers;
+        const query = req.query;
+        const env = 'your unique key';
+        res.status(200).json({ status: 200, message: 'movie updated', headers, query, env });
+    })
+    .delete(authController.isAuthenticated, (req, res) => {
+        const headers = req.headers;
+        const query = req.query;
+        const env = 'your unique key';
+        res.status(200).json({ status: 200, message: 'movie deleted', headers, query, env });
+    })
+    .all((req, res) => {
+        res.status(405).send({ message: 'HTTP method not supported.' });
+    });
+
     
 app.use('/', router);
 app.listen(process.env.PORT || 8080);
