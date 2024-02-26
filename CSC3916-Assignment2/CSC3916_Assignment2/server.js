@@ -72,17 +72,17 @@ router.post('/signin', (req, res) => {
     }
 });
 
-router.post('/signup', (req, res) => {
-    const { username, password } = req.body;
-    // Your user registration implementation here
-    res.status(200).json({ message: 'User registered successfully' });
-});
+// router.post('/signup', (req, res) => {
+//     const { username, password } = req.body;
+//     // Your user registration implementation here
+//     res.status(200).json({ message: 'User registered successfully' });
+// });
 
-router.post('/signin', (req, res) => {
-    const { username, password } = req.body;
-    // Your user login implementation here
-    res.status(200).json({ message: 'User logged in successfully' });
-});
+// router.post('/signin', (req, res) => {
+//     const { username, password } = req.body;
+//     // Your user login implementation here
+//     res.status(200).json({ message: 'User logged in successfully' });
+// });
 
 
 router.route('/testcollection')
@@ -133,7 +133,7 @@ router.route('/movies')
         res.status(200).json({ status: 200, message: 'movie deleted', headers, query, env });
     })
     .all((req, res) => {
-        res.status(405).send({ message: 'HTTP method not supported.' });
+        res.status(405).send({ message: 'HTTP method is not supported.' });
     });
 
     
